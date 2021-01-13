@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Testbook_test]">
+  <test thread-count="5" name="Functional_tesing(failed)">
+    <classes>
+      <class name="testRunner.Workflow3_Runner">
+        <methods>
+          <include name="run_cukes"/>
+        </methods>
+      </class> <!-- testRunner.Workflow3_Runner -->
+    </classes>
+  </test> <!-- Functional_tesing(failed) -->
+</suite> <!-- Failed suite [Testbook_test] -->
