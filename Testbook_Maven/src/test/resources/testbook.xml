@@ -2,7 +2,7 @@
 	<test name = "Functional_tesing">
 		<classes>
 			<class name = "base.testBook_Base"/>
-			<class name = "testRunner.Workflow3_Runner"/>
+			<class name = "testRunner.Workflow1_Runner"/>
 		</classes>
 	</test>
 </suite>

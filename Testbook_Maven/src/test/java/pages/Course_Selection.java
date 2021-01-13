@@ -1,3 +1,10 @@
+/* Author: Prachi Shah
+ * Date: 10-Jan-2020
+ * Tests: Course_Selection Functionality
+ * Description: Contains the methods for navigating to couse tab, searching 
+ * 				for a course selecting a course and clicking on buy pass.
+ */
+
 package pages;
 
 import java.io.FileInputStream;
@@ -18,6 +25,7 @@ import com.aventstack.extentreports.Status;
 import base.testBook_Base;
 
 public class Course_Selection extends testBook_Base{
+	//Course page elements.
 	static @FindBy(xpath = "//a[@class='nav-icon-text courses js-header-link']") WebElement courses_tab;
 	static @FindBy(id = "coursesInfoNav") WebElement course_nav;
 	static @FindBy(xpath = "//div[@class='courses ui-card courses--offset']") WebElement course_section;
@@ -26,16 +34,19 @@ public class Course_Selection extends testBook_Base{
 	static @FindBy(xpath = "//h3[text()='Analytical Reasoning for Banking Course Curriculum']") WebElement course_content;
 	static @FindBy(xpath = "//a[@class='btn ui-btn w-100 btn-success ng-scope ng-binding']") WebElement click_getpass;
 	
+	//Initialize soft assert
 	WebDriverWait wait = new WebDriverWait(driver, 10);
 	SoftAssert softAssert = new SoftAssert();
 	
-	public Course_Selection() {
+	//Binds course page elements.
+	public Course_Selection(){
 		PageFactory.initElements(driver, this);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	public void go_to_courses() {
-		try {
+	//Go to courses
+	public void go_to_courses(){
+		try{
 			wait.until(ExpectedConditions.visibilityOf(courses_tab));
 			courses_tab.click();
 			log = ext.createTest("Course tab navigation");
@@ -44,7 +55,7 @@ public class Course_Selection extends testBook_Base{
 			Thread.sleep(1000);
 			System.out.println("User able to click on course tab.");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Course tab navigation");
 			log.log(Status.FAIL, "Cannot click on course tab.");
 			takescreenshot("Course_tab_click.png");
@@ -52,9 +63,10 @@ public class Course_Selection extends testBook_Base{
 		}
 	}
 	
-	public void choose_course(String course) {
-		try {
-			if(course.matches("banking")) {
+	//Choose a course
+	public void choose_course(String course){
+		try{
+			if(course.matches("banking")){
 				course_nav.findElement(By.xpath("//input[@placeholder='Search Courses']")).sendKeys(course);
 				new Actions(driver).click().perform();
 				log = ext.createTest("Get_preferred_course");
@@ -65,11 +77,11 @@ public class Course_Selection extends testBook_Base{
 				my_course.click();
 				System.out.println("User's specific course is chosen.");
 			}
-			else {
+			else{
 				System.out.println("User preferred course is not searched.");
 			}			
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Get_preferred_course");
 			log.log(Status.FAIL, "User specific course not selected.");
 			takescreenshot("User_search_course.png");
@@ -77,9 +89,10 @@ public class Course_Selection extends testBook_Base{
 		}
 	}
 	
-	public void validate_course() {
+	//Validates and asserts the selected course page.
+	public void validate_course(){
 		Boolean heading = course_heading.getText().isEmpty();
-		try {
+		try{
 			Assert.assertNotNull(heading);
 				System.out.println(course_heading.getText());
 				log = ext.createTest("My_course");
@@ -88,7 +101,7 @@ public class Course_Selection extends testBook_Base{
 				System.out.println("User can view his course.");
 				System.out.println("-------------------------------------------------------------------------");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("My_course");
 			log.log(Status.FAIL, "User's course not openned.");
 			takescreenshot("Open_user_course.png");
@@ -97,8 +110,9 @@ public class Course_Selection extends testBook_Base{
 		}
 	}
 	
-	public void get_testbook_pass() {
-		try {
+	//Clicks on get testbook pass
+	public void get_testbook_pass(){
+		try{
 			wait.until(ExpectedConditions.visibilityOf(click_getpass));
 				click_getpass.click();
 				log = ext.createTest("GetPass is displayed");
@@ -108,7 +122,7 @@ public class Course_Selection extends testBook_Base{
 				System.out.println("User is able to click on the Get Pass option.");
 				System.out.println("---------------------------------------------------------------------------");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("GetPass is displayed");
 			log.log(Status.FAIL, "User is not able to click on the get pass button.");
 			takescreenshot("Get_Pass.png");

@@ -25,8 +25,6 @@ import base.testBook_Base;
 public class Buy_Pass extends testBook_Base{
 	
 	//Buy page elements.
-	
-	
 	static @FindBy(id = "vpa-upi") WebElement upi_id;
 	static @FindBy(id = "card_cvv") WebElement card_Cvv;
 	static @FindBy(id ="tab-title") WebElement payment_back;
@@ -49,32 +47,37 @@ public class Buy_Pass extends testBook_Base{
 	static @FindBy(xpath = "//div[@class='pricing-list']/div/div[text()='Monthly Testbook ']") WebElement monthly_plan;
 	static @FindBy(xpath = "//div[@class='pricing-list']/div/div[text()='14 Month Testbook ']") WebElement month14_plan;
 	
+	//Initialize excel
 	FileInputStream fin;
 	XSSFWorkbook wb;
 	XSSFSheet ws;
 	
+	//Initialize asserts
 	WebDriverWait wait = new WebDriverWait(driver, 10);
 	SoftAssert softAssert = new SoftAssert();
 	
+	//Binds buy pass page elements.
 	public Buy_Pass() {
 		PageFactory.initElements(driver, this);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	public void plan_display() {
+	//Display plans
+	public void plan_display(){
 		System.out.println("The purchase plans displayed are: ");
 		System.out.println("            1. "+weekly_plan.getText());
 		System.out.println("            2. "+monthly_plan.getText());
 		System.out.println("            3. "+month14_plan.getText());
 	}
 	
+	//Choose a plan as data driven excel
 	public void plan_choose() throws Exception{
 		fin = new FileInputStream("src/test/resources/profile_update.xlsx");
 		wb = new XSSFWorkbook(fin);
 		ws = wb.getSheet("Plan");
 		Row row;
 		String plan;
-		try {
+		try{
 			for(int r=1; r<=ws.getLastRowNum();r++) {
 				row = ws.getRow(r);
 				plan = row.getCell(0).getStringCellValue();
@@ -94,7 +97,7 @@ public class Buy_Pass extends testBook_Base{
 				Thread.sleep(1000);
 			}
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Choose a plan");
 			log.log(Status.FAIL, "User is not able to choose his preferred plan.");
 			takescreenshot("Any_Plan.png");
@@ -104,13 +107,16 @@ public class Buy_Pass extends testBook_Base{
 		fin.close();
 	}
 	
-	public void click_buy_pass() throws Exception {
+	//Clicks on buy pass.
+	public void click_buy_pass() throws Exception{
 		wait.until(ExpectedConditions.visibilityOf(get_pass_button));
 		get_pass_button.click();
 		System.out.println("User clicks on Buy Pass");
 	}
-	public void validate_payment_method_displayed() {
-		try {
+	
+	//Validates payment methods displayed.
+	public void validate_payment_method_displayed(){
+		try{
 			driver.switchTo().frame(payment_frame);
 			Thread.sleep(2000);
 			String title = frame_title.getText();
@@ -121,8 +127,7 @@ public class Buy_Pass extends testBook_Base{
 				System.out.println("Payment frame is visible to user.");
 				System.out.println("----------------------------------------------------------------------------");
 		}
-		catch(Exception e)
-		{
+		catch(Exception e){
 			log = ext.createTest("Payment_methods_displayed");
 			log.log(Status.FAIL,"User is not able to view the payment plans.");
 			takescreenshot("Payment_details.png");
@@ -131,8 +136,9 @@ public class Buy_Pass extends testBook_Base{
 		}
 	}
 	
-	public void select_upi_payment() {
-		try {
+	//Selects upi payment method
+	public void select_upi_payment(){
+		try{
 			wait.until(ExpectedConditions.visibilityOf(upi_payment));
 			upi_payment.click();
 			Thread.sleep(1000);
@@ -141,7 +147,7 @@ public class Buy_Pass extends testBook_Base{
 			takescreenshot("Upi_Payment_Opted.png");
 			System.out.println("User opted for UPI Payment method.");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Upi_payment");
 			log.log(Status.FAIL, "User has not chosen upi payment method.");
 			takescreenshot("Upi_Payment_Opted.png");
@@ -149,6 +155,7 @@ public class Buy_Pass extends testBook_Base{
 		}
 	}
 	
+	//Selects card payment method
 	public void select_card_payment() {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(card_payment));
@@ -167,16 +174,17 @@ public class Buy_Pass extends testBook_Base{
 		}
 	}
 	
+	//Adds upi id as data driven from excel
 	public void add_upi_id() throws Exception{
 		fin = new FileInputStream("src/test/resources/profile_update.xlsx");
 		wb = new XSSFWorkbook(fin);
 		ws = wb.getSheet("UPI");
 		Row row;
-		try {
+		try{
 			wait.until(ExpectedConditions.visibilityOf(upi_id));
 			upi_id.click();
 			String id;
-			for(int r=1;r<=ws.getLastRowNum();r++) {
+			for(int r=1;r<=ws.getLastRowNum();r++){
 				row = ws.getRow(r);
 				id = row.getCell(0).getStringCellValue();
 				if(id.contains("@")) {
@@ -190,7 +198,7 @@ public class Buy_Pass extends testBook_Base{
 					pay_button.click();
 					System.out.println("User has entered his valid upi id.");
 				}
-				else {
+				else{
 					upi_id.clear();
 					upi_id.sendKeys(id);
 					Thread.sleep(1000);
@@ -206,7 +214,7 @@ public class Buy_Pass extends testBook_Base{
 				}
 			}	
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Upi_input");
 			log.log(Status.FAIL,"User has not entered the upi id.");
 			takescreenshot("Upi_id_input.png");
@@ -216,20 +224,21 @@ public class Buy_Pass extends testBook_Base{
 		fin.close();
 	}
 	
+	//Adds card details as data driven from excel
 	public void add_card_details() throws Exception{
 		fin = new FileInputStream("src/test/resources/profile_update.xlsx");
 		wb = new XSSFWorkbook(fin);
 		ws = wb.getSheet("Card");
 		Row row;
-		try {
+		try{
 			wait.until(ExpectedConditions.visibilityOf(card_number));
-			for(int r=1;r<=ws.getLastRowNum();r++) {
+			for(int r=1;r<=ws.getLastRowNum();r++){
 				row = ws.getRow(r);
 				String number = row.getCell(0).getStringCellValue();
 				String exp_date = row.getCell(1).getStringCellValue();
 				String name = row.getCell(2).getStringCellValue();
 				String cvv= row.getCell(3).getStringCellValue();
-				if(number.isEmpty() == true) {
+				if(number.isEmpty() == true){
 					card_number.click();
 					card_number.sendKeys(number);
 					Thread.sleep(1000);
@@ -251,10 +260,7 @@ public class Buy_Pass extends testBook_Base{
 					payment_back.click();
 					select_card_payment();
 				}
-				else {
-					card_number.click();
-					card_number.sendKeys(number);
-					Thread.sleep(1000);
+				else{
 					card_expiry_date.click();
 					card_expiry_date.sendKeys(exp_date);
 					Thread.sleep(1000);
@@ -264,6 +270,9 @@ public class Buy_Pass extends testBook_Base{
 					card_Cvv.click();
 					card_Cvv.sendKeys(cvv);
 					Thread.sleep(1000);
+					card_number.click();
+					card_number.sendKeys(number);
+					Thread.sleep(1000);
 					log = ext.createTest("Card_details_input");
 					log.log(Status.PASS,"User has entered the valid card details.");
 					takescreenshot("Valid_card_details.png");
@@ -272,7 +281,7 @@ public class Buy_Pass extends testBook_Base{
 				}
 			}			
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Card_input");
 			log.log(Status.FAIL,"User has not entered the card details.");
 			takescreenshot("Card_details_input.png");
@@ -282,9 +291,9 @@ public class Buy_Pass extends testBook_Base{
 		fin.close();
 	}
 		
-		
-	public void validate_upi_payment_status() {
-		try {
+	//Validates_upi_payment
+	public void validate_upi_payment_status(){
+		try{
 			System.out.println("User clicks on Pay button.");
 			Thread.sleep(1000);
 			String error_mes = invalid_upi_payment.getText();
@@ -296,16 +305,16 @@ public class Buy_Pass extends testBook_Base{
 				System.out.println("--------------------------------------------------------------------------------");
 				close_button.click();
 		}
-		catch(Exception e)
-		{
+		catch(Exception e){
 			log = ext.createTest("Payment_validation");
 			log.log(Status.FAIL,"User is not able to view the invalid payment details message.");
 			takescreenshot("Invalid_UPI_Payment_Error.png");
 		}
 	}
 	
-	public void validate_card_payment_status() {
-		try {
+	//Validates_card_payment
+	public void validate_card_payment_status(){
+		try{
 			wait.until(ExpectedConditions.visibilityOf(pay_button));
 			pay_button.click();
 			System.out.println("User clicks on Pay button.");
@@ -319,8 +328,7 @@ public class Buy_Pass extends testBook_Base{
 				System.out.println("--------------------------------------------------------------------------------");
 				close_button.click();
 		}
-		catch(Exception e)
-		{
+		catch(Exception e){
 			log = ext.createTest("Payment_validation");
 			log.log(Status.FAIL,"User is not able to view the invalid payment details message.");
 			takescreenshot("Invalid_Card_Payment_Error.png");
