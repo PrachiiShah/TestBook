@@ -33,6 +33,7 @@ public class Buy_Pass extends testBook_Base{
 	static @FindBy(id = "fd-t") WebElement invalid_upi_payment;
 	static @FindBy(id = "card_name") WebElement card_holder_name;
 	static @FindBy(id = "card_expiry") WebElement card_expiry_date;
+	static @FindBy(xpath = "//button[text()='Retry']") WebElement retry;
 	static @FindBy(xpath = "//button[@method= 'upi']") WebElement upi_payment;
 	static @FindBy(xpath = "//div[@id='modal-close']") WebElement close_button;
 	static @FindBy(xpath = "//button[@method= 'card']") WebElement card_payment;
@@ -213,7 +214,10 @@ public class Buy_Pass extends testBook_Base{
 					Thread.sleep(2000);
 					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered invalid upi id.");
-					Thread.sleep(3000);
+					if(retry.isDisplayed()) {
+						retry.click();
+						Thread.sleep(1000);
+					}
 					payment_back.click();
 					select_upi_payment();
 				}
