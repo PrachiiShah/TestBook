@@ -14,7 +14,8 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 //Runs the entire scenario from login upto viewing a live class.
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = {"FeatureFiles/01Login/Login_Email.feature","FeatureFiles/04LiveClasses/ClassDisplay.feature"} 					
+		features = {"C:\\Users\\coolp\\git\\repository2\\Testbook_Maven\\FeatureFiles\\01Login\\Login_Email.feature",
+				"C:\\Users\\coolp\\git\\repository2\\Testbook_Maven\\FeatureFiles\\04LiveClasses\\ClassDisplay.feature"} 					
 		,glue={"stepDefinition","base"}									
 		,tags= {"@Testbook_Page,@Valid_Email_Login,@LiveClassList"}												
 		)

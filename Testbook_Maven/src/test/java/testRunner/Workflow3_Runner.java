@@ -1,3 +1,11 @@
+/* Author: Prachi Shah
+ * Date: 12-Jan-2020
+ * Tests: Login->Test Series Purchase functionality
+ * Description: Contains the runner class for executing the workflow in a sequence as:
+ * 				1. Valid user login
+ * 				2. Test series tab navigation -> choose test series -> click unlock now
+ * 				3. Choose plan -> choose payment method -> enter valid details -> Click purchase
+ */
 package testRunner;
 
 import org.junit.runner.RunWith;

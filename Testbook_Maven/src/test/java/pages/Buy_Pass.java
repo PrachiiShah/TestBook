@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -196,7 +197,8 @@ public class Buy_Pass extends testBook_Base{
 					takescreenshot("Valid_Upi_input.png");
 					wait.until(ExpectedConditions.visibilityOf(pay_button));
 					pay_button.click();
-					System.out.println("User has entered his valid upi id.");
+					System.out.println("User clicks on Pay button.");
+					System.out.println("User has entered his valid upi id.");		
 				}
 				else{
 					upi_id.clear();
@@ -207,6 +209,7 @@ public class Buy_Pass extends testBook_Base{
 					takescreenshot("Invalid_Upi_input.png");
 					wait.until(ExpectedConditions.visibilityOf(pay_button));
 					pay_button.click();
+					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered invalid upi id.");
 					Thread.sleep(3000);
 					payment_back.click();
@@ -239,9 +242,6 @@ public class Buy_Pass extends testBook_Base{
 				String name = row.getCell(2).getStringCellValue();
 				String cvv= row.getCell(3).getStringCellValue();
 				if(number.isEmpty() == true){
-					card_number.click();
-					card_number.sendKeys(number);
-					Thread.sleep(1000);
 					card_expiry_date.click();
 					card_expiry_date.sendKeys(exp_date);
 					Thread.sleep(1000);
@@ -251,16 +251,23 @@ public class Buy_Pass extends testBook_Base{
 					card_Cvv.click();
 					card_Cvv.sendKeys(cvv);
 					Thread.sleep(1000);
+					card_number.click();
+					card_number.sendKeys(number);
+					Thread.sleep(1000);
 					log = ext.createTest("Card_details_input");
 					log.log(Status.FAIL,"User has entered invalid card details.");
 					takescreenshot("Invalid_card_details.png");
 					pay_button.click();
+					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered the invalid card details.");
 					Thread.sleep(1000);
 					payment_back.click();
 					select_card_payment();
 				}
 				else{
+					card_number.click();
+					card_number.sendKeys(number);
+					Thread.sleep(1000);
 					card_expiry_date.click();
 					card_expiry_date.sendKeys(exp_date);
 					Thread.sleep(1000);
@@ -270,13 +277,11 @@ public class Buy_Pass extends testBook_Base{
 					card_Cvv.click();
 					card_Cvv.sendKeys(cvv);
 					Thread.sleep(1000);
-					card_number.click();
-					card_number.sendKeys(number);
-					Thread.sleep(1000);
 					log = ext.createTest("Card_details_input");
 					log.log(Status.PASS,"User has entered the valid card details.");
 					takescreenshot("Valid_card_details.png");
 					pay_button.click();
+					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered his valid card details.");
 				}
 			}			
@@ -294,8 +299,6 @@ public class Buy_Pass extends testBook_Base{
 	//Validates_upi_payment
 	public void validate_upi_payment_status(){
 		try{
-			System.out.println("User clicks on Pay button.");
-			Thread.sleep(1000);
 			String error_mes = invalid_upi_payment.getText();
 			softAssert.assertEquals(error_mes, "Invalid VPA.");
 				log = ext.createTest("Payment_validation");
@@ -303,7 +306,10 @@ public class Buy_Pass extends testBook_Base{
 				takescreenshot("Invalid_UPI_Payment_Error.png");
 				System.out.println("User is displayed the invalid VPA error.");
 				System.out.println("--------------------------------------------------------------------------------");
+				new Actions(driver).click().perform();
+				Thread.sleep(1000);
 				close_button.click();
+				driver.navigate().refresh();
 		}
 		catch(Exception e){
 			log = ext.createTest("Payment_validation");
@@ -315,10 +321,6 @@ public class Buy_Pass extends testBook_Base{
 	//Validates_card_payment
 	public void validate_card_payment_status(){
 		try{
-			wait.until(ExpectedConditions.visibilityOf(pay_button));
-			pay_button.click();
-			System.out.println("User clicks on Pay button.");
-			Thread.sleep(1000);
 			String error_mes = invalid_card_payment.getText();
 			softAssert.assertEquals(error_mes, "Card");
 				log = ext.createTest("Payment_validation");
@@ -326,7 +328,10 @@ public class Buy_Pass extends testBook_Base{
 				takescreenshot("Invalid_Card_Payment_Error.png");
 				System.out.println("User is still on the card details page. Validation failed.");
 				System.out.println("--------------------------------------------------------------------------------");
+				new Actions(driver).click().perform();
+				Thread.sleep(1000);
 				close_button.click();
+				driver.navigate().refresh();
 		}
 		catch(Exception e){
 			log = ext.createTest("Payment_validation");

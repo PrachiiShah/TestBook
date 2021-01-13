@@ -82,7 +82,7 @@ public class testBook_Base {
 		catch(Exception e) {}
 	}
 	
-	@After("@Payment_methods_card")
+	@After("@Payment_methods_upi")
 //	@After("@Payment_methods_card")																								
 	public void after_scenario()	{
 		ext.flush();

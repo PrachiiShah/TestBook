@@ -2,7 +2,10 @@
  * Date: 11-Jan-2020
  * Tests: Login->Settings->Cousre Purchase functionality
  * Description: Contains the runner class for executing the workflow in a sequence as:
- * 				
+ * 				1. Valid user login
+ * 				2. Go to settings -> upload profile pic -> update user details -> save profile
+ * 				3. Course tab navigation -> choose course -> click get testbook pass
+ * 				4. Choose plan -> choose payment method -> enter valid details -> Click purchase	
  */
 
 package testRunner;
