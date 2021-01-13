@@ -1,9 +1,14 @@
-package pages;
+/* Author: Prachi Shah
+ * Date: 11-Jan-2020
+ * Tests: Course_Selection Functionality
+ * Description: Contains the methods for navigating to test series tab, 
+ * 				selecting a test series and clicking on unlock now.
+ */
 
+package pages;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -16,6 +21,8 @@ import com.aventstack.extentreports.Status;
 import base.testBook_Base;
 
 public class TestSeries_Selection extends testBook_Base{
+	
+	//Test series page elements.
 	static @FindBy(xpath = "//li[@class='nav-item tut-test-series']") WebElement testseries_tab;
 	static @FindBy(xpath = "//h4[@title = 'SSC CGL Mock Test 2020']") WebElement my_test_series;
 	static @FindBy(xpath = "//a[@ng-href='/ssc-cgl-exam/test-series']") WebElement view_test_series;
@@ -23,16 +30,20 @@ public class TestSeries_Selection extends testBook_Base{
 	static @FindBy(xpath = "//h4[@title = 'General Awareness Chapter Test 1']") WebElement test_1;
 	static @FindBy(xpath = "//a[@title = 'Unlock General Awareness Chapter Test 1']") WebElement click_unlockNow;
 	static @FindBy(xpath = "//div[@class = 'ng-isolate-scope']") WebElement free_row;
+	
+	//Initialize assert
 	WebDriverWait wait = new WebDriverWait(driver, 10);
 	SoftAssert softAssert = new SoftAssert();
 	
-	public TestSeries_Selection() {
+	//Binds test series page elements.
+	public TestSeries_Selection(){
 		PageFactory.initElements(driver, this);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	public void go_to_testseries() {
-		try {
+	//Navigates to test series
+	public void go_to_testseries(){
+		try{
 			wait.until(ExpectedConditions.visibilityOf(testseries_tab));
 			testseries_tab.click();
 			log = ext.createTest("Testseries tab navigation");
@@ -40,7 +51,7 @@ public class TestSeries_Selection extends testBook_Base{
 			takescreenshot("TestSeries_tab_click.png");
 			System.out.println("User able to click on test series tab.");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Testseries tab navigation");
 			log.log(Status.FAIL, "Cannot click on test series tab.");
 			takescreenshot("TestSeries_tab_click.png");
@@ -48,8 +59,8 @@ public class TestSeries_Selection extends testBook_Base{
 		}
 	}
 	
-	public void free_series_display() {
-		try {
+	public void free_series_display(){
+		try{
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("window.scrollTo(0,900)");
 			List<WebElement> free_series = free_row.findElements(By.xpath("//div[@class='test-title text-truncate ng-binding']"));
@@ -63,7 +74,7 @@ public class TestSeries_Selection extends testBook_Base{
 			System.out.println("Free series are displayed to user.");
 			System.out.println("-------------------------------------------------------------------------------");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("Free Series Display");
 			log.log(Status.PASS, "Free test series displayed to user.");
 			takescreenshot("Free_Series.png");
@@ -71,8 +82,9 @@ public class TestSeries_Selection extends testBook_Base{
 		}
 	}
 	
-	public void choose_series() {
-		try {
+	//Selects a test series
+	public void choose_series(){
+		try{
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("window.scrollBy(900,0)");
 			String series = my_test_series.getText();
@@ -83,7 +95,7 @@ public class TestSeries_Selection extends testBook_Base{
 				log.log(Status.PASS, "User specific test series selected.");
 				takescreenshot("User_test_series.png");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("View test series");
 			log.log(Status.FAIL, "User specific test series not selected.");
 			takescreenshot("User_test_series.png");
@@ -91,8 +103,9 @@ public class TestSeries_Selection extends testBook_Base{
 		}
 	}
 	
+	//Validates test series page
 	public void validate_test_series() {
-		try {
+		try{
 			Boolean series_heading = test_series_heading.getText().isEmpty();
 			softAssert.assertNotNull(series_heading);
 				System.out.println(test_series_heading.getText());
@@ -102,7 +115,7 @@ public class TestSeries_Selection extends testBook_Base{
 				System.out.println("User can view his test series.");
 				System.out.println("-------------------------------------------------------------------------");
 		}
-		catch(Exception e) {
+		catch(Exception e){
 			log = ext.createTest("My test series");
 			log.log(Status.FAIL, "User's test series not openned.");
 			takescreenshot("Open_test_series.png");
@@ -111,7 +124,8 @@ public class TestSeries_Selection extends testBook_Base{
 		}
 	}
 	
-	public void unlock_now() {
+	//Clicks on unlock now
+	public void unlock_now(){
 		try {
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("window.scrollBy(0,800)");

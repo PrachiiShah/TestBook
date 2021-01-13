@@ -10,8 +10,5 @@ Feature: Selecting test series
 	Scenario: 
 		When user is on selected series page
 		Then user clicks on unlock now button
-	@FreeSeriesDisplay
-	Scenario:
-		Given user clicks on Test series tab
-		Then user is diplayed free test series list
+
 		

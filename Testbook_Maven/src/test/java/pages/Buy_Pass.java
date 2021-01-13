@@ -188,14 +188,15 @@ public class Buy_Pass extends testBook_Base{
 			for(int r=1;r<=ws.getLastRowNum();r++){
 				row = ws.getRow(r);
 				id = row.getCell(0).getStringCellValue();
-				if(id.contains("@")) {
+				if(id.contains("@ok")) {
 					upi_id.clear();
 					upi_id.sendKeys(id);
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					log = ext.createTest("Upi_valid_input");
 					log.log(Status.PASS,"User has entered the valid upi id.");
 					takescreenshot("Valid_Upi_input.png");
 					wait.until(ExpectedConditions.visibilityOf(pay_button));
+					Thread.sleep(2000);
 					pay_button.click();
 					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered his valid upi id.");		
@@ -203,12 +204,13 @@ public class Buy_Pass extends testBook_Base{
 				else{
 					upi_id.clear();
 					upi_id.sendKeys(id);
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					log = ext.createTest("Upi_input");
 					log.log(Status.FAIL,"User has entered the upi id.");
 					takescreenshot("Invalid_Upi_input.png");
 					wait.until(ExpectedConditions.visibilityOf(pay_button));
 					pay_button.click();
+					Thread.sleep(2000);
 					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered invalid upi id.");
 					Thread.sleep(3000);

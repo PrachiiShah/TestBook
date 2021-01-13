@@ -1,3 +1,9 @@
+/* Author: Prachi Shah
+ * Date: 13-Jan-2020
+ * Tests: Logout Functionality
+ * Description: Contains the methods for clicking on logout after the workflow has completed.
+ */
+
 package pages;
 
 import java.util.concurrent.TimeUnit;

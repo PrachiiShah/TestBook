@@ -5,6 +5,7 @@
  * 				Updates profile pic, Education, Date of Birth, Category,
  * 				Location, Language, Save Profile.
  */
+
 package pages;
 
 import java.io.FileInputStream;
