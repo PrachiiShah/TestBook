@@ -34,6 +34,7 @@ public class Settings_Page extends testBook_Base {
 	static @FindBy(xpath = "//span[text()='English']") WebElement my_lang;
 	static @FindBy(xpath = "//span[text()='MBA/PGDM']") WebElement my_course;
 	static @FindBy(xpath = "//span[text()='General']") WebElement my_category;
+	static @FindBy(xpath = "//span[text()='OBC']") WebElement select_category;
 	static @FindBy(xpath = "(//img[@class='circle-img'])[2]") WebElement dropdown;
 	static @FindBy(xpath = "//button[@ng-click='saveProfile(user)']") WebElement save;
 	static @FindBy(xpath = "//input[@placeholder='Your category']") WebElement add_category;
@@ -223,7 +224,13 @@ public class Settings_Page extends testBook_Base {
 			Thread.sleep(2000);
 			for(int r = 1; r<=ws.getLastRowNum();r++) {
 				row = ws.getRow(r);
-				if(my_category.getText().contains(row.getCell(1).getStringCellValue())){
+				if(select_category.getText().contains(row.getCell(1).getStringCellValue())){
+					Thread.sleep(2000);
+					log = ext.createTest("Category Details");
+					log.log(Status.PASS, "User is category already selected.");
+					takescreenshot("Add_Category.png");
+				}
+				else {
 					my_category.click();
 					Thread.sleep(2000);
 					log = ext.createTest("Category Details");

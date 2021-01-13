@@ -199,6 +199,7 @@ public class Buy_Pass extends testBook_Base{
 					wait.until(ExpectedConditions.visibilityOf(pay_button));
 					Thread.sleep(2000);
 					pay_button.click();
+					Thread.sleep(2000);
 					System.out.println("User clicks on Pay button.");
 					System.out.println("User has entered his valid upi id.");		
 				}
