@@ -218,8 +218,6 @@ public class Buy_Pass extends testBook_Base{
 						retry.click();
 						Thread.sleep(1000);
 					}
-					payment_back.click();
-					select_upi_payment();
 				}
 			}	
 		}
