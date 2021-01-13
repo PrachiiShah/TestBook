@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testRunner.Workflow4_Runner">
+      <class name="testRunner.Workflow2_Runner">
         <methods>
           <include name="run_cukes"/>
         </methods>
-      </class> <!-- testRunner.Workflow4_Runner -->
+      </class> <!-- testRunner.Workflow2_Runner -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

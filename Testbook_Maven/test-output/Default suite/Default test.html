@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Jan 13 11:07:00 IST 2021</td>
+<td>Started on:</td><td>Wed Jan 13 14:03:33 IST 2021</td>
 </tr>
-<tr><td>Total time:</td><td>52 seconds (52404 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (153 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,38 +75,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testRunner.Workflow4_Runner.run_cukes()'><b>run_cukes</b><br>Test class: testRunner.Workflow4_Runner<br>Test method: Runs Cucumber Features<br/>
-<a href="#Output-1676827075" onClick='toggleBox("Output-1676827075", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1676827075" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1676827075">
-<div "featureFile">Feature File: FeatureFiles&#x2F;01Login&#x2F;Login_Email.feature</div><br/>
-<div "feature">Feature: Login using Email</div><br/>
-<div "scenario">Scenario: Testbook Page</div><br/>
-<div "result">Given  user is on testbook site (passed : 3s)</div><br/>
-<div "result">Then  user clicks on login button (passed : 17s)</div><br/>
-<div "scenarioOutline">Scenario Outline: Valid email login</div><br/>
-<div "scenario">Scenario Outline: Valid email login</div><br/>
-<div "result">When  user enters valid &lt;email&gt; valid &lt;password&gt; clicks login (passed : 4s)</div><br/>
-<div "result">Then  user is  redirected to homepage (passed : 3s)</div><br/>
-<div "featureFile">Feature File: FeatureFiles&#x2F;04LiveClasses&#x2F;ClassDisplay.feature</div><br/>
-<div "feature">Feature: Available live classes</div><br/>
-<div "scenario">Scenario: Display live classes</div><br/>
-<div "result">When  user enters valid ps242215@gmail.com valid Mprachi@22 clicks login (passed : 6s)</div><br/>
-<div "result">Then  user is  redirected to homepage (passed : 1s)</div><br/>
-<div "result">Given  user clicks on Live Classes Tab (failed : 10s)</div><br/>
-</div>
-</td>
-<td><div><pre>cucumber.runtime.CucumberException: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[contains(text(),&apos;SSC Result Dates Out&apos;)]&quot;}
-  (Session info: chrome=87.0.4280.141)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-006A7428&apos;, ip: &apos;192.168.29.6&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.141, chrome: {chromedriverVersion: 87.0.4280.20 (c99e81631faa0..., userDataDir: C:\Users\coolp\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:60252}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 541e1a2c1b32ddd70af6d045b43ca919
-*** Element info: {Using=xpath, value=//div[contains(text(),&apos;SSC Result Dates Out&apos;)]}
-	at cucumber.api.testng.AbstractTestNGCucumberTests.run_cukes(AbstractTestNGCucumberTests.java:41)
+<td title='testRunner.Workflow2_Runner.run_cukes()'><b>run_cukes</b><br>Test class: testRunner.Workflow2_Runner<br>Test method: Runs Cucumber Features</td>
+<td><div><pre>java.lang.IllegalArgumentException: Not a file or directory: C:\Users\coolp\git\repository2\Testbook_Maven\FeatureFiles\02BillingAndPayment\2_BuyPass.feature
+	at cucumber.runtime.io.FileResourceIterator$FileIterator.&lt;init&gt;(FileResourceIterator.java:54)
+	at cucumber.runtime.io.FileResourceIterator.&lt;init&gt;(FileResourceIterator.java:20)
+	at cucumber.runtime.io.FileResourceIterable.iterator(FileResourceIterable.java:19)
+	at cucumber.runtime.model.CucumberFeature.load(CucumberFeature.java:51)
+	at cucumber.runtime.model.CucumberFeature.load(CucumberFeature.java:33)
+	at cucumber.runtime.RuntimeOptions.cucumberFeatures(RuntimeOptions.java:143)
+	at cucumber.runtime.Runtime.run(Runtime.java:107)
+	at cucumber.api.testng.AbstractTestNGCucumberTests.run_cukes(AbstractTestNGCucumberTests.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -135,46 +113,16 @@ Session ID: 541e1a2c1b32ddd70af6d045b43ca919
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[contains(text(),&apos;SSC Result Dates Out&apos;)]&quot;}
-  (Session info: chrome=87.0.4280.141)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-006A7428&apos;, ip: &apos;192.168.29.6&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.141, chrome: {chromedriverVersion: 87.0.4280.20 (c99e81631faa0..., userDataDir: C:\Users\coolp\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:60252}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 541e1a2c1b32ddd70af6d045b43ca919
-*** Element info: {Using=xpath, value=//div[contains(text(),&apos;SSC Result Dates Out&apos;)]}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy17.getText(Unknown Source)
-	at pages.LiveClasses.check_redirection(LiveClasses.java:46)
-	at stepDefinition.LiveClassesSteps.live_video_is_displayed(LiveClassesSteps.java:27)
-	at ?.Then live video is displayed(FeatureFiles/04LiveClasses/ClassDisplay.feature:8)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1676827075", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1676827075'><pre>cucumber.runtime.CucumberException: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[contains(text(),&apos;SSC Result Dates Out&apos;)]&quot;}
-  (Session info: chrome=87.0.4280.141)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-006A7428&apos;, ip: &apos;192.168.29.6&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.141, chrome: {chromedriverVersion: 87.0.4280.20 (c99e81631faa0..., userDataDir: C:\Users\coolp\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:60252}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 541e1a2c1b32ddd70af6d045b43ca919
-*** Element info: {Using=xpath, value=//div[contains(text(),&apos;SSC Result Dates Out&apos;)]}
-	at cucumber.api.testng.AbstractTestNGCucumberTests.run_cukes(AbstractTestNGCucumberTests.java:41)
+</pre></div><a href='#' onClick='toggleBox("stack-trace222427158", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace222427158'><pre>java.lang.IllegalArgumentException: Not a file or directory: C:\Users\coolp\git\repository2\Testbook_Maven\FeatureFiles\02BillingAndPayment\2_BuyPass.feature
+	at cucumber.runtime.io.FileResourceIterator$FileIterator.&lt;init&gt;(FileResourceIterator.java:54)
+	at cucumber.runtime.io.FileResourceIterator.&lt;init&gt;(FileResourceIterator.java:20)
+	at cucumber.runtime.io.FileResourceIterable.iterator(FileResourceIterable.java:19)
+	at cucumber.runtime.model.CucumberFeature.load(CucumberFeature.java:51)
+	at cucumber.runtime.model.CucumberFeature.load(CucumberFeature.java:33)
+	at cucumber.runtime.RuntimeOptions.cucumberFeatures(RuntimeOptions.java:143)
+	at cucumber.runtime.Runtime.run(Runtime.java:107)
+	at cucumber.api.testng.AbstractTestNGCucumberTests.run_cukes(AbstractTestNGCucumberTests.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -203,38 +151,9 @@ Session ID: 541e1a2c1b32ddd70af6d045b43ca919
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[contains(text(),&apos;SSC Result Dates Out&apos;)]&quot;}
-  (Session info: chrome=87.0.4280.141)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-006A7428&apos;, ip: &apos;192.168.29.6&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.141, chrome: {chromedriverVersion: 87.0.4280.20 (c99e81631faa0..., userDataDir: C:\Users\coolp\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:60252}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 541e1a2c1b32ddd70af6d045b43ca919
-*** Element info: {Using=xpath, value=//div[contains(text(),&apos;SSC Result Dates Out&apos;)]}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy17.getText(Unknown Source)
-	at pages.LiveClasses.check_redirection(LiveClasses.java:46)
-	at stepDefinition.LiveClassesSteps.live_video_is_displayed(LiveClassesSteps.java:27)
-	at ?.Then live video is displayed(FeatureFiles/04LiveClasses/ClassDisplay.feature:8)
 </pre></div></td>
-<td>52</td>
-<td>testRunner.Workflow4_Runner@23202fce</td></tr>
+<td>0</td>
+<td>testRunner.Workflow2_Runner@7b993c65</td></tr>
 </table><p>
 </body>
 </html>
