@@ -317,6 +317,9 @@ public class Buy_Pass extends testBook_Base{
 				driver.navigate().refresh();
 		}
 		catch(Exception e){
+			if(retry.isDisplayed()) {
+				retry.click();
+			}
 			log = ext.createTest("Payment_validation");
 			log.log(Status.FAIL,"User is not able to view the invalid payment details message.");
 			takescreenshot("Invalid_UPI_Payment_Error.png");

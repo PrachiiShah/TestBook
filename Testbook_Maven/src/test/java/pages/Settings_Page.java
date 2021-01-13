@@ -67,11 +67,11 @@ public class Settings_Page extends testBook_Base {
 		try{
 			dropdown.click();
 			System.out.println("Clicking on profile button............");
-			settings_option.click();
-			System.out.println("Clicking on settings............");
 			log = ext.createTest("Click Profile Button");
 			log.log(Status.PASS, "User clicks on profile -> settings option.");
-			takescreenshot("Settings_button.png");			
+			takescreenshot("Settings_button.png");	
+			settings_option.click();
+			System.out.println("Clicking on settings............");
 		}
 		catch(Exception e){
 			System.out.println("Profile button is not displayed............");
@@ -165,13 +165,13 @@ public class Settings_Page extends testBook_Base {
 				row = ws.getRow(i);
 				add_education.sendKeys(row.getCell(0).getStringCellValue());
 				my_course.click();
+				log = ext.createTest("Education Detail");
+				log.log(Status.PASS, "User is able to update his education level.");
+				takescreenshot("Add_Education.png");
 			}
 			Thread.sleep(1000);
-			new Actions(driver).click().perform();
-			log = ext.createTest("Education Detail");
-			log.log(Status.PASS, "User is able to update his education level.");
-			takescreenshot("Add_Education.png");
 			System.out.println("Education details added.");
+			new Actions(driver).click().perform();
 		}
 		catch(Exception e){
 			log = ext.createTest("Education Detail");
@@ -232,12 +232,12 @@ public class Settings_Page extends testBook_Base {
 				}
 				else {
 					my_category.click();
-					Thread.sleep(2000);
 					log = ext.createTest("Category Details");
 					log.log(Status.PASS, "User is able to update his category.");
 					takescreenshot("Add_Category.png");
 				}
 			}
+			Thread.sleep(2000);
 			System.out.println("Category added.");
 			new Actions(driver).click().perform();			
 		}
